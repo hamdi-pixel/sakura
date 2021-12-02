@@ -199,3 +199,10 @@ Sakura.prototype.stop = function(graceful = false) {
     }, this.settings.delay + 50);
   }
 };
+
+const SakuraVuePlugin = {};
+SakuraVuePlugin.install = function (Vue) {
+  Vue.prototype.$sakura = Sakura;
+};
+
+module.exports = SakuraVuePlugin;
