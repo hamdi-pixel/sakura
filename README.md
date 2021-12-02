@@ -1,5 +1,5 @@
 # Sakura.js
-Sakura.js is an improved vanilla JS version of the [jQuery-Sakura](https://github.com/almightynay/jQuery-Sakura) plugin. It makes it rain petals on a (section) of your page. _Credits to the original creator of the jQuery plugin._ I made this plugin because I wanted a tweaked vanilla JS version with NPM support.
+This is an installable Vue.js plugin for the Sakura.js which is an improved vanilla JS version of the [jQuery-Sakura](https://github.com/almightynay/jQuery-Sakura) plugin. It makes it rain petals on a (section) of your page. _Credits to the original creator of the jQuery plugin._ I made this plugin because I wanted a tweaked vanilla JS version with NPM support.
 
 Sakura.js (like its original jQuery plugin) uses CSS3 animations and `requestAnimationFrame` to add elements which look like blossom petals to the DOM. You can add it on any element like the body, a div etc. They will animate on your page influenced by wind and gravity. Of course this doesn't have to be limited to blossom petals. It can be regular leafs as well or something completely different.
 
@@ -12,34 +12,30 @@ You can check a demo here: [jhammann.github.io/sakura/](https://jhammann.github.
 You can install Sakura.js with NPM:
 
 ```bash
-$ npm install sakura-js
+$ npm install https://github.com/hamdi-pixel/sakura.git
 ```
 
 Or with Yarn if you prefer:
 
 ```bash
-$ yarn add sakura-js
+$ yarn add https://github.com/hamdi-pixel/sakura.git
 ```
 
 ## Setup
-Include the Sakura.js files inside your page and initialize it within your javascript.
-Below code shows the petals in your body (see the [demo](https://jhammann.github.io/sakura/) for the results).
+Install it as a normal Vue.js plugin
+Below code shows the petals in your body (see the original Sakura-js [demo](https://jhammann.github.io/sakura/) for the results).
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    ...
-    <link rel="stylesheet" href="path/to/sakura.min.css">
-</head>
-<body>
-    ...
-    <script src="path/to/sakura.min.js"></script>
-    <script>
-      var sakura = new Sakura('body');
-    </script>
-</body>
-</html>
+```javascript
+import Vue from "vue";
+import "sakura-js/dist/sakura.min.css";
+import Sakura from "sakura-js/dist/sakura.min.js";
+Vue.use(Sakura);
+```
+
+Then, anywhere in your code
+```javascript
+const options = {};
+const sakura = new this.$sakura('body', options); // any js selector can be passed as a first parameter
 ```
 
 ## Options
@@ -54,6 +50,9 @@ Below code shows the petals in your body (see the [demo](https://jhammann.github
 | `colors.gradientColorStart`  | The petals are made with a [linear-gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient). This is the start color (in rgba). | String  | 'rgba(255, 183, 197, 0.9)' |
 | `colors.gradientColorEnd`    | The linear-gradient end color (in rgba).                                                                                                           | String  | 'rgba(255, 197, 208, 0.9)' |
 | `colors.gradientColorDegree` | The degree in which the linear-gradient tilts.                                                                                                     | Integer | 120                        |
+
+## Below, you'll find example from the original sakura-js repository
+You can easily convert them to Vue.js structure - Enjoy :"D
 
 ##### Adding multiple colors
 You can add multiple colors like the example below. Colors are randomly picked.
